@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /medicine-inventory-ui/.angular/cache/20.3.30/medicine-inventory-ui
 /medicine-inventory-ui/.vscode
+/medicine-inventory-ui/dist/medicine-inventory-ui
