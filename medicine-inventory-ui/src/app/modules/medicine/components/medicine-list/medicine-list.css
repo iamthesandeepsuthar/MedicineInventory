@@ -1,0 +1,7 @@
+tr.expiry-soon > td {
+  background-color: #f8d7da;
+}
+
+tr.low-stock > td {
+  background-color: #fff3cd;
+}

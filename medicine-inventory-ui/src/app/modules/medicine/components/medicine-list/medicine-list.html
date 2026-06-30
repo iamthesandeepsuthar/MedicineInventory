@@ -27,8 +27,8 @@
     <tbody>
       <tr
         *ngFor="let medicine of medicines"
-        [class.table-danger]="isExpiryNear(medicine.expiryDate)"
-        [class.table-warning]="isLowStock(medicine.quantity)">
+        [class.expiry-soon]="isExpiryNear(medicine.expiryDate)"
+        [class.low-stock]="isLowStock(medicine.quantity) && !isExpiryNear(medicine.expiryDate)">
   
         <td>{{ medicine.fullName }}</td>
         <td>{{ medicine.brand }}</td>

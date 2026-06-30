@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  MedicineService } from '../../services/medicine';
+import { MedicineService } from '../../services/medicine';
 import { Router } from '@angular/router';
 import { MedicineModel } from '../../models/medicine';
 
@@ -51,12 +51,14 @@ export class MedicineListComponent implements OnInit {
   isExpiryNear(date: string): boolean {
     const expiry = new Date(date);
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    expiry.setHours(0, 0, 0, 0);
 
-    const diff =
+    const diffDays =
       (expiry.getTime() - today.getTime()) /
       (1000 * 60 * 60 * 24);
 
-    return diff < 30;
+    return diffDays < 30;
   }
 
   isLowStock(quantity: number): boolean {
