@@ -1,18 +1,12 @@
 <div class="d-flex justify-content-between align-items-center mb-3">
 
-  <div class="d-flex align-items-center gap-2">
+  <div class="input-group" style="width: 320px;">
+    <span class="input-group-text"><i class="bi bi-search"></i></span>
     <input
+      type="text"
       class="form-control"
-      style="width: 300px;"
-      [(ngModel)]="search"
-      placeholder="Search by Name or Brand">
-
-    <button
-      class="btn btn-primary"
-      title="Search"
-      (click)="load()">
-      <i class="bi bi-search"></i> Search
-    </button>
+      placeholder="Search by Name or Brand"
+      (input)="onSearch($any($event.target).value)">
   </div>
 
   <button

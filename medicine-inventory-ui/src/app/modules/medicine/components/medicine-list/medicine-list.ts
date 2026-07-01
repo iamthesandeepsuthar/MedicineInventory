@@ -1,4 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MedicineService } from '../../services/medicine';
 import { MedicineModel } from '../../models/medicine';
 
@@ -6,13 +8,14 @@ import { MedicineModel } from '../../models/medicine';
   selector: 'app-medicine-list',
   templateUrl: './medicine-list.html',
   styleUrl: './medicine-list.css',
-  standalone :false
+  standalone: false
 })
- 
 export class MedicineListComponent implements OnInit {
 
   medicines = signal<MedicineModel[]>([]);
   search = '';
+
+  private searchSubject = new Subject<string>();
 
   constructor(
     private medicineService: MedicineService
@@ -20,6 +23,18 @@ export class MedicineListComponent implements OnInit {
 
   ngOnInit(): void {
     this.load();
+
+    this.searchSubject.pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+    ).subscribe(value => {
+      this.search = value;
+      this.load();
+    });
+  }
+
+  onSearch(value: string) {
+    this.searchSubject.next(value);
   }
 
   load() {
@@ -42,7 +57,6 @@ export class MedicineListComponent implements OnInit {
       });
   }
 
-
   getMedicineClass(medicine: MedicineModel): string {
     const expiry = new Date(medicine.expiryDate);
     const today = new Date();
@@ -63,5 +77,4 @@ export class MedicineListComponent implements OnInit {
 
     return '';
   }
-  
 }
