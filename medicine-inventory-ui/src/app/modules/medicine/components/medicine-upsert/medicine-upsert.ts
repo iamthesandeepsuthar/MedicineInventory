@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MedicineService } from '../../services/medicine';
 
 @Component({
-  selector: 'app-medicine-upsert',  
+  selector: 'app-medicine-upsert',
   templateUrl: './medicine-upsert.html',
   styleUrl: './medicine-upsert.css',
-  standalone : false
+  standalone: false
 })
 export class MedicineUpsertComponent implements OnInit {
 
@@ -19,7 +19,8 @@ export class MedicineUpsertComponent implements OnInit {
     private fb: FormBuilder,
     private service: MedicineService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -42,7 +43,12 @@ export class MedicineUpsertComponent implements OnInit {
       this.service
         .getMedicine(this.id)
         .subscribe(res => {
-          this.form.patchValue(res);
+          this.form.patchValue({
+            ...res,
+            expiryDate: res.expiryDate
+              ? res.expiryDate.toString().substring(0, 10)
+              : ''
+          });
         });
     }
   }
@@ -63,6 +69,7 @@ export class MedicineUpsertComponent implements OnInit {
         .subscribe(() => {
           alert('Medicine updated successfully');
           this.router.navigate(['/medicines']);
+          this.cdr.markForCheck();
         });
 
       return;
@@ -73,6 +80,7 @@ export class MedicineUpsertComponent implements OnInit {
       .subscribe(() => {
         alert('Medicine added successfully');
         this.router.navigate(['/medicines']);
+        this.cdr.markForCheck();
       });
   }
 }

@@ -1,11 +1,29 @@
 [
   {
-    "Id": "bfa979fb-3ffc-4bb2-96dc-eed35b00a4d9",
-    "FullName": "Paracetamol 500mg",
-    "Notes": "Take after food",
-    "ExpiryDate": "2026-07-22T00:00:00",
-    "Quantity": 8,
-    "Price": 45.5,
-    "Brand": "Cipla"
+    "Id": "edc32c90-1a50-4065-9243-ad6692761de1",
+    "FullName": "Dolo",
+    "Notes": "after food",
+    "ExpiryDate": "2026-08-08T00:00:00",
+    "Quantity": 100,
+    "Price": 200,
+    "Brand": "cipla"
+  },
+  {
+    "Id": "92332192-13a3-4efa-bcc4-f70bceff8bc8",
+    "FullName": "dar",
+    "Notes": "44",
+    "ExpiryDate": "2026-09-30T00:00:00",
+    "Quantity": 9,
+    "Price": 12,
+    "Brand": "wer"
+  },
+  {
+    "Id": "ad518748-cfa8-45ec-b18c-cba506b4bed0",
+    "FullName": "paracitamol",
+    "Notes": "after food",
+    "ExpiryDate": "2026-07-30T00:00:00",
+    "Quantity": 20,
+    "Price": 10,
+    "Brand": "cipla"
   }
 ]

@@ -39,42 +39,14 @@ namespace MyApp.Namespace
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(
-            Medicine medicine)
-        {
-            var result =
-                await _service.Add(medicine);
+        public async Task<bool> Add(Medicine medicine) => await _service.Add(medicine);
 
-            return CreatedAtAction(
-                nameof(GetById),
-                new { id = result.Id },
-                result);
-        }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(
-            Guid id,
-            Medicine medicine)
-        {
-            var updated =
-                await _service.Update(id, medicine);
-
-            if (!updated)
-                return NotFound();
-
-            return Ok("Medicine updated successfully.");
-        }
+        public async Task<bool> Update(Guid id, Medicine medicine) => await _service.Update(id, medicine);
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Guid id)
-        {
-            var deleted =
-                await _service.Delete(id);
+        public async Task<bool> Delete(Guid id) => await _service.Delete(id);
 
-            if (!deleted)
-                return NotFound();
-
-            return Ok("Medicine deleted successfully.");
-        }
     }
 }

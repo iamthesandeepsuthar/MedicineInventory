@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { MedicineService } from '../../services/medicine';
-import { Router } from '@angular/router';
 import { MedicineModel } from '../../models/medicine';
 
 @Component({
@@ -12,12 +11,11 @@ import { MedicineModel } from '../../models/medicine';
  
 export class MedicineListComponent implements OnInit {
 
-  medicines: MedicineModel[] = [];
+  medicines = signal<MedicineModel[]>([]);
   search = '';
 
   constructor(
-    private medicineService: MedicineService,
-    private router: Router
+    private medicineService: MedicineService
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +26,7 @@ export class MedicineListComponent implements OnInit {
     this.medicineService
       .getMedicines(this.search)
       .subscribe(res => {
-        this.medicines = res;
+        this.medicines.set(res);
       });
   }
 
@@ -44,9 +42,6 @@ export class MedicineListComponent implements OnInit {
       });
   }
 
-  edit(id: string) {
-    this.router.navigate(['/medicines/edit', id]);
-  }
 
   getMedicineClass(medicine: MedicineModel): string {
     const expiry = new Date(medicine.expiryDate);

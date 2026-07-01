@@ -69,7 +69,7 @@ public class MedicineService : IMedicineService
         return medicines.FirstOrDefault(x => x.Id == id);
     }
 
-    public async Task<Medicine> Add(Medicine medicine)
+    public async Task<bool> Add(Medicine medicine)
     {
         List<Medicine> medicines = await ReadFile();
 
@@ -79,11 +79,12 @@ public class MedicineService : IMedicineService
 
         await SaveFile(medicines);
 
-        return medicine;
+        return true;
     }
 
     public async Task<bool> Update(Guid id, Medicine medicine)
     {
+
         List<Medicine> medicines = await ReadFile();
 
         Medicine? existing =
