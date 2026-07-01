@@ -29,8 +29,8 @@ export class MedicineUpsertComponent implements OnInit {
       fullName: ['', Validators.required],
       notes: [''],
       expiryDate: ['', Validators.required],
-      quantity: [0, Validators.required],
-      price: [0, Validators.required],
+      quantity: [0, [Validators.required, Validators.min(0), Validators.pattern(/^[0-9]+$/)]],
+      price: [0, [Validators.required, Validators.min(0), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
       brand: ['', Validators.required]
     });
 
@@ -82,5 +82,24 @@ export class MedicineUpsertComponent implements OnInit {
         this.router.navigate(['/medicines']);
         this.cdr.markForCheck();
       });
+  }
+
+  onQuantityKeyPress(event: KeyboardEvent): boolean {
+    const charCode = event.key;
+    // Allow digits 0-9 only
+    return /^[0-9]$/.test(charCode);
+  }
+
+  onPriceKeyPress(event: KeyboardEvent, value: string): boolean {
+    const charCode = event.key;
+    // Allow digits 0-9 and a single decimal point
+    if (charCode === '.') {
+      return !value.includes('.');
+    }
+    // Allow navigation/delete keys or check key is digit
+    if (event.ctrlKey || event.metaKey || charCode.length > 1) {
+      return true;
+    }
+    return /^[0-9]$/.test(charCode);
   }
 }
