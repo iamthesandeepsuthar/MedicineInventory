@@ -2,17 +2,11 @@
 
   <div class="input-group" style="width: 320px;">
     <span class="input-group-text"><i class="bi bi-search"></i></span>
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Search by Name or Brand"
+    <input type="text" class="form-control" placeholder="Search by Name or Brand"
       (input)="onSearch($any($event.target).value)">
   </div>
 
-  <button
-    class="btn btn-success"
-    title="Add new medicine"
-    routerLink="/medicines/add">
+  <button class="btn btn-success" title="Add new medicine" routerLink="/medicines/add">
     <i class="bi bi-plus-lg"></i> Add Medicine
   </button>
 
@@ -31,9 +25,7 @@
   </thead>
 
   <tbody>
-    <tr
-      *ngFor="let medicine of medicines()"
-      [class]="getMedicineClass(medicine)">
+    <tr *ngFor="let medicine of medicines()" [class]="getMedicineClass(medicine)">
 
       <td>{{ medicine.fullName }}</td>
       <td>{{ medicine.brand }}</td>
@@ -42,19 +34,13 @@
       <td>{{ medicine.price | number:'1.2-2' }}</td>
 
       <td class="text-center">
-        <button
-          class="btn btn-sm btn-warning me-1 rounded-circle"
-          style="width:32px;height:32px;padding:0;"
-          title="Edit medicine"
-          [routerLink]="['/medicines/edit', medicine.id]">
+        <button class="btn btn-sm btn-warning me-1 rounded-circle" style="width:32px;height:32px;padding:0;"
+          title="Edit medicine" [routerLink]="['/medicines/edit', medicine.id]">
           <i class="bi bi-pencil-fill"></i>
         </button>
 
-        <button
-          class="btn btn-sm btn-danger rounded-circle"
-          style="width:32px;height:32px;padding:0;"
-          title="Delete medicine"
-          (click)="delete(medicine.id)">
+        <button class="btn btn-sm btn-danger rounded-circle" style="width:32px;height:32px;padding:0;"
+          title="Delete medicine" (click)="delete(medicine.id)">
           <i class="bi bi-trash-fill"></i>
         </button>
       </td>
