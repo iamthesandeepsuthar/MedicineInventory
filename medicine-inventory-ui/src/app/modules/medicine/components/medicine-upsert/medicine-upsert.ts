@@ -61,6 +61,7 @@ export class MedicineUpsertComponent implements OnInit {
           this.form.value
         )
         .subscribe(() => {
+          alert('Medicine updated successfully');
           this.router.navigate(['/medicines']);
         });
 
@@ -70,6 +71,7 @@ export class MedicineUpsertComponent implements OnInit {
     this.service
       .addMedicine(this.form.value)
       .subscribe(() => {
+        alert('Medicine added successfully');
         this.router.navigate(['/medicines']);
       });
   }

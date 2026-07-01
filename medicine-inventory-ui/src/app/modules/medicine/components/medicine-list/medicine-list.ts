@@ -48,8 +48,8 @@ export class MedicineListComponent implements OnInit {
     this.router.navigate(['/medicines/edit', id]);
   }
 
-  isExpiryNear(date: string): boolean {
-    const expiry = new Date(date);
+  getMedicineClass(medicine: MedicineModel): string {
+    const expiry = new Date(medicine.expiryDate);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     expiry.setHours(0, 0, 0, 0);
@@ -58,10 +58,15 @@ export class MedicineListComponent implements OnInit {
       (expiry.getTime() - today.getTime()) /
       (1000 * 60 * 60 * 24);
 
-    return diffDays < 30;
-  }
+    if (diffDays < 30) {
+      return 'expiry-soon';
+    }
 
-  isLowStock(quantity: number): boolean {
-    return quantity < 10;
+    if (medicine.quantity < 10) {
+      return 'low-stock';
+    }
+
+    return '';
   }
+  
 }
