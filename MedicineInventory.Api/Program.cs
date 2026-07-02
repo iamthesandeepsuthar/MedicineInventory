@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddSingleton<IMedicineService, MedicineService>();
+builder.Services.AddSingleton<ISaleService, SaleService>();
 builder.Services.AddCors(o => o.AddPolicy("AllowAnyOrigin",
          builder =>
          {

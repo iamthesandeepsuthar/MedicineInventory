@@ -1,0 +1,20 @@
+[
+  {
+    "Id": "1822bc2f-5977-4fd5-bfc3-b6ccb05f777e",
+    "MedicineId": "edc32c90-1a50-4065-9243-ad6692761de1",
+    "MedicineName": "Dolo",
+    "Quantity": 10,
+    "UnitPrice": 200,
+    "TotalPrice": 2000,
+    "SaleDate": "2026-07-01T22:38:12.472168+05:30"
+  },
+  {
+    "Id": "bac0a07c-6d18-4516-ac93-90f6cf89fbae",
+    "MedicineId": "edc32c90-1a50-4065-9243-ad6692761de1",
+    "MedicineName": "Dolo",
+    "Quantity": 50,
+    "UnitPrice": 200,
+    "TotalPrice": 10000,
+    "SaleDate": "2026-07-02T10:16:42.8141878+05:30"
+  }
+]

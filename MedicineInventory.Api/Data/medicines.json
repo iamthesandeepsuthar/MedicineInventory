@@ -1,14 +1,5 @@
 [
   {
-    "Id": "edc32c90-1a50-4065-9243-ad6692761de1",
-    "FullName": "Dolo",
-    "Notes": "after food",
-    "ExpiryDate": "2026-08-08T00:00:00",
-    "Quantity": 100,
-    "Price": 200,
-    "Brand": "cipla"
-  },
-  {
     "Id": "92332192-13a3-4efa-bcc4-f70bceff8bc8",
     "FullName": "dar",
     "Notes": "44",

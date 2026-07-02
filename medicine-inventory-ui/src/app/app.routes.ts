@@ -8,6 +8,12 @@ export const routes: Routes = [
           .then(m => m.MedicineModule)
     },
     {
+      path: 'sales',
+      loadChildren: () =>
+        import('./modules/sale/sale-module')
+          .then(m => m.SaleModule)
+    },
+    {
       path: '',
       redirectTo: 'medicines',
       pathMatch: 'full'

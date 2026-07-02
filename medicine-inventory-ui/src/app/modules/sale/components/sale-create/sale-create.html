@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card-header">
+    Record Sale
+  </div>
+  <div class="card-body">
+    <form [formGroup]="form">
+      <div class="mb-3">
+        <label>Medicine <span class="text-danger">*</span></label>
+        <select class="form-select" formControlName="medicineId"
+          [class.is-invalid]="form.get('medicineId')?.invalid && (form.get('medicineId')?.dirty || form.get('medicineId')?.touched)">
+          <option value="">Select a medicine...</option>
+          <option *ngFor="let med of medicines" [value]="med.id">
+            {{ med.fullName }} (Stock: {{ med.quantity }}, Brand: {{ med.brand }})
+          </option>
+        </select>
+        <div class="invalid-feedback">
+          Please select a medicine.
+        </div>
+      </div>
+
+      <div class="mb-3" *ngIf="selectedMedicine">
+        <div class="p-3 bg-light border rounded">
+          <div><strong>Brand:</strong> {{ selectedMedicine.brand }}</div>
+          <div><strong>Unit Price:</strong> ${{ selectedMedicine.price | number:'1.2-2' }}</div>
+          <div><strong>Available Stock:</strong> {{ selectedMedicine.quantity }}</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label>Quantity <span class="text-danger">*</span></label>
+        <input type="number" step="1" class="form-control" formControlName="quantity"
+          (keypress)="onQuantityKeyPress($event)"
+          [class.is-invalid]="form.get('quantity')?.invalid && (form.get('quantity')?.dirty || form.get('quantity')?.touched)">
+        <div class="invalid-feedback">
+          <span *ngIf="form.get('quantity')?.errors?.['required']">Quantity is required.</span>
+          <span *ngIf="form.get('quantity')?.errors?.['min']">Quantity must be at least 1.</span>
+          <span *ngIf="form.get('quantity')?.errors?.['max']">Cannot exceed available stock ({{ selectedMedicine?.quantity }}).</span>
+          <span *ngIf="form.get('quantity')?.errors?.['pattern']">Quantity must be a whole number.</span>
+        </div>
+      </div>
+
+      <div class="mb-3" *ngIf="selectedMedicine && form.get('quantity')?.valid">
+        <h5>Total: ${{ selectedMedicine.price * form.get('quantity')?.value | number:'1.2-2' }}</h5>
+      </div>
+
+      <button class="btn btn-success me-2" type="button" (click)="save()">
+        <i class="bi bi-check-lg me-1"></i> Save
+      </button>
+      <button class="btn btn-secondary" type="button" routerLink="/sales">
+        <i class="bi bi-x-lg me-1"></i> Cancel
+      </button>
+    </form>
+  </div>
+</div>
