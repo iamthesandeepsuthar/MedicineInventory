@@ -19,8 +19,8 @@
     <tr *ngFor="let sale of sales()">
       <td>{{ sale.medicineName }}</td>
       <td>{{ sale.quantity }}</td>
-      <td>${{ sale.unitPrice | number:'1.2-2' }}</td>
-      <td>${{ sale.totalPrice | number:'1.2-2' }}</td>
+      <td>{{ sale.unitPrice | number:'1.2-2' }}</td>
+      <td>{{ sale.totalPrice | number:'1.2-2' }}</td>
       <td>{{ sale.saleDate | date:'medium' }}</td>
     </tr>
     <tr *ngIf="sales().length === 0">

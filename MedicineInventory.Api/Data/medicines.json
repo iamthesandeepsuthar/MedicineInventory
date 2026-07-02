@@ -1,20 +1,47 @@
 [
   {
-    "Id": "92332192-13a3-4efa-bcc4-f70bceff8bc8",
-    "FullName": "dar",
-    "Notes": "44",
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "FullName": "Paracetamol 500mg",
+    "Notes": "Standard pain reliever.",
     "ExpiryDate": "2026-09-30T00:00:00",
-    "Quantity": 9,
-    "Price": 12,
-    "Brand": "wer"
+    "Quantity": 44,
+    "Price": 2.5,
+    "Brand": "GSK"
   },
   {
-    "Id": "ad518748-cfa8-45ec-b18c-cba506b4bed0",
-    "FullName": "paracitamol",
-    "Notes": "after food",
-    "ExpiryDate": "2026-07-30T00:00:00",
-    "Quantity": 20,
-    "Price": 10,
-    "Brand": "cipla"
+    "Id": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6",
+    "FullName": "Ibuprofen 400mg",
+    "Notes": "Anti-inflammatory medication.",
+    "ExpiryDate": "2027-05-20T00:00:00",
+    "Quantity": 5,
+    "Price": 4.99,
+    "Brand": "Pfizer"
+  },
+  {
+    "Id": "f7e6d5c4-b3a2-10f9-8e7d-6c5b4a3f2e1d",
+    "FullName": "Amoxicillin 250mg",
+    "Notes": "Common antibiotic.",
+    "ExpiryDate": "2026-07-10T00:00:00",
+    "Quantity": 2,
+    "Price": 15.20,
+    "Brand": "Sandoz"
+  },
+  {
+    "Id": "9f8e7d6c-5b4a-3f2e-1d0c-b9a8f7e6d5c4",
+    "FullName": "Loratadine 10mg",
+    "Notes": "24-hour allergy relief.",
+    "ExpiryDate": "2027-10-12T00:00:00",
+    "Quantity": 120,
+    "Price": 8.75,
+    "Brand": "Bayer"
+  },
+  {
+    "Id": "1a2b3c4d-5e6f-7a8b-9c0d-e1f2a3b4c5d6",
+    "FullName": "Aspirin 81mg",
+    "Notes": "Low dose aspirin for heart health.",
+    "ExpiryDate": "2026-09-15T00:00:00",
+    "Quantity": 50,
+    "Price": 3,
+    "Brand": "Bayer"
   }
 ]

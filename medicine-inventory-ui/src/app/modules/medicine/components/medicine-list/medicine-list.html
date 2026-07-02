@@ -45,5 +45,8 @@
         </button>
       </td>
     </tr>
+    <tr *ngIf="medicines().length === 0">
+      <td colspan="6" class="text-center text-muted">No medicine records found.</td>
+    </tr>
   </tbody>
 </table>
